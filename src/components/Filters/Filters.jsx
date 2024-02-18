@@ -12,6 +12,7 @@ import {
 } from './Filters.styled';
 import { selectMaxPrice, selectMinPrice } from '../../redux/selectors';
 import { useSearchParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 const makes = [
   'Buick',
@@ -39,6 +40,7 @@ const makes = [
 
 export const Filters = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [brand, setBrand] = useState('');
   const maxPrice = useSelector(selectMaxPrice);
   const minPrice = useSelector(selectMinPrice);
 
@@ -50,19 +52,18 @@ export const Filters = () => {
     return result;
   };
 
-  // useEffect(() => {
-  //   if (searchParams.has('brand')) {
-  //     setBrand(searchParams.get('brand'));
-  //   } else {
-  //     setBrand('');
-  //   }
-  // }, [searchParams]);
+  useEffect(() => {
+    if (searchParams.has('brand')) {
+      setBrand(searchParams.get('brand'));
+    } else {
+      setBrand('');
+    }
+  }, [searchParams]);
 
   const handleSubmit = e => {
     e.preventDefault();
 
     const brand = e.target.brand.value;
-    console.log(searchParams);
     setSearchParams({ brand });
   };
 
@@ -71,8 +72,8 @@ export const Filters = () => {
       <label>
         <Label>Car brand</Label>
         <FormItemWrapper>
-          <Select name="brand" id="brand" width="224px">
-            <option value="" disabled selected hidden>
+          <Select name="brand" id="brand" width="224px" defaultValue={brand}>
+            <option value="" disabled hidden>
               Enter the text
             </option>
             {makes.map(item => (
