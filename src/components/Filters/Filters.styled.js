@@ -34,6 +34,21 @@ export const Select = styled.select`
   line-height: 1.11;
 `;
 
+export const Selector = styled.div`
+  display: flex;
+  align-items: center;
+  padding-left: 18px;
+  width: ${({ width }) => width};
+  height: 48px;
+  border: none;
+  border-radius: 14px;
+  background: #f7f7fb;
+
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.11;
+`;
+
 export const MilageWrapper = styled.input`
   padding-left: 75px;
   width: 160px;
@@ -102,6 +117,26 @@ export const CustomArrow = styled(Arrow)`
   position: absolute;
   top: 50%;
   right: 18px;
-  transform: translateY(-50%);
   pointer-events: none;
+
+  transform: rotate(${({ $isOpen }) => ($isOpen ? '180deg' : '360deg')})
+    translateY(-50%);
+  transform-origin: top;
+`;
+
+export const SelectorWrapper = styled.div`
+  position: relative;
+`;
+
+export const SelectorItem = styled.li`
+  cursor: pointer;
+
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
+
+  &:hover,
+  &:focus {
+    color: ${({ theme: { colors } }) => colors.primeryBlack};
+  }
 `;

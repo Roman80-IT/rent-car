@@ -20,23 +20,25 @@ export const Catalog = () => {
   const controllerRef = useRef();
 
   useEffect(() => {
-    const make = searchParams.get('brand');
-
-    if (make) {
-      if (controllerRef.current) {
-        controllerRef.current.abort();
-      }
-
-      controllerRef.current = new AbortController();
-
-      dispatch(getByMake(searchParams.get('brand')));
-      setLastPage(true);
-      return () => {
-        controllerRef.current.abort();
-      };
-    } else {
+    if (searchParams.size === 0) {
       dispatch(fetchPage({ page, limit: LIMIT }));
+      return;
     }
+
+    if (controllerRef.current) {
+      controllerRef.current.abort();
+    }
+
+    controllerRef.current = new AbortController();
+    const filters = {};
+
+    searchParams.forEach((value, key) => (filters[key] = value));
+
+    dispatch(getByMake(filters));
+    setLastPage(true);
+    return () => {
+      controllerRef.current.abort();
+    };
   }, [searchParams, dispatch, page]);
 
   useEffect(() => {

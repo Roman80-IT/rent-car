@@ -7,7 +7,7 @@ import { ReactComponent as Close } from '../../../icons/x.svg';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const Modal = ({ close, children }) => {
+export const Modal = ({ close, children }) => {
   useEffect(() => {
     const closeModalEsc = ({ code }) => {
       if (code === 'Escape') {
@@ -41,5 +41,3 @@ const Modal = ({ close, children }) => {
     modalRoot
   );
 };
-
-export default Modal;

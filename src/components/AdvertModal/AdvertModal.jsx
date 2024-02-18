@@ -15,7 +15,7 @@ import {
   ImgContainer,
   Value,
 } from './AdvertModal.styled';
-import Modal from 'components/Global/Modal/Modal';
+import { Modal } from 'components/Global/Modal/Modal';
 
 export const AdvertModal = ({ data, close }) => {
   const {

@@ -12,19 +12,30 @@ export const fetchPage = createAsyncThunk(
       );
       return response.data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.config.method);
+      return thunkAPI.rejectWithValue(e);
     }
   }
 );
 
 export const getByMake = createAsyncThunk(
   'adverts/getByMake',
-  async (make, thunkAPI) => {
+  async ({ brand, price, mileageFrom, mileageTo }, thunkAPI) => {
     try {
-      const response = await axios.get(`${BASE_URL}/advert?make=${make}`);
-      return response.data;
+      const response = await axios.get(
+        `${BASE_URL}/advert?make=${brand || ''}`
+      );
+      const result = response.data.filter(({ rentalPrice, mileage }) => {
+        return (
+          (!price ||
+            parseInt(rentalPrice.replace(/\D/g, '')) <= parseInt(price)) &&
+          (!mileageFrom || mileage >= parseInt(mileageFrom)) &&
+          (!mileageTo || mileage <= parseInt(mileageTo))
+        );
+      });
+
+      return result;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.config.method);
+      return thunkAPI.rejectWithValue(e);
     }
   }
 );

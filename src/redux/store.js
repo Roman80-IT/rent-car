@@ -11,6 +11,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { advertsReducer } from './advertsSlice';
+import { filterReducer } from './filtersSlice';
 
 const favoritesPersistConfig = {
   key: 'adverts',
@@ -21,6 +22,7 @@ const favoritesPersistConfig = {
 export const store = configureStore({
   reducer: {
     adverts: persistReducer(favoritesPersistConfig, advertsReducer),
+    filters: filterReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
