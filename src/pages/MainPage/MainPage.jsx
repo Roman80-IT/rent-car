@@ -15,7 +15,7 @@ export const MainPage = () => {
           Orient yourself in your travels - choose our cars for best comfort
         </Text>
       </TextContainer>
-      <ButtonLink href="/catalog">
+      <ButtonLink to="/catalog">
         Check the price and order a car online
       </ButtonLink>
     </Wrapper>

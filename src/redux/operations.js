@@ -10,7 +10,7 @@ export const fetchPage = createAsyncThunk(
       const response = await axios.get(
         `${BASE_URL}/advert?page=${page}&limit=${limit}`
       );
-      return response.data;
+      return { data: response.data, page };
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
     }

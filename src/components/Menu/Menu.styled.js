@@ -1,4 +1,5 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const List = styled.ul`
   display: flex;
@@ -26,6 +27,6 @@ export const ListItem = styled.li`
   }
 `;
 
-export const IconLink = styled.a`
+export const IconLink = styled(NavLink)`
   display: flex;
 `;

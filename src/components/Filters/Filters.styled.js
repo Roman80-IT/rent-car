@@ -99,17 +99,19 @@ export const Btn = styled.button`
   border: none;
   border-radius: 12px;
   margin-top: 28px;
-  background: ${({ theme: { colors } }) => colors.lightBlue};
+  background: ${({ theme: { colors }, disabled }) =>
+    disabled ? 'grey' : colors.lightBlue};
   color: ${({ theme: { colors } }) => colors.primeryWhite};
   font-weight: 600;
   line-height: 1.43;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
 
   transition: background-color var(--animation-time) var(--animation-cubic);
 
   &:hover,
   &:focus {
-    background: ${({ theme: { colors } }) => colors.darkBlue};
+    background: ${({ theme: { colors }, disabled }) =>
+      disabled ? null : colors.darkBlue};
   }
 `;
 
@@ -142,4 +144,20 @@ export const SelectorItem = styled.li`
   &:focus {
     color: ${({ theme: { colors } }) => colors.primeryBlack};
   }
+`;
+
+export const MileageContainer = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const InvalidErrorMessage = styled.p`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transform: translateY(100%);
+  font-size: 10px;
+  color: red;
 `;

@@ -5,7 +5,7 @@ export const Header = () => {
   return (
     <StyledHeader>
       <Container>
-        <Logo href="/">RentCarUA</Logo>
+        <Logo to="/">RentCarUA</Logo>
         <Menu />
       </Container>
     </StyledHeader>

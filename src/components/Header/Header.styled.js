@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const StyledHeader = styled.header`
   position: fixed;
@@ -35,7 +36,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Logo = styled.a`
+export const Logo = styled(NavLink)`
   display: flex;
   align-items: center;
   font-weight: 700;

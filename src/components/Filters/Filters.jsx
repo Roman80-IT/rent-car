@@ -6,8 +6,10 @@ import {
   FormItemWrapper,
   FromTo,
   FromToContainer,
+  InvalidErrorMessage,
   Label,
   MilageWrapper,
+  MileageContainer,
   Selector,
   SelectorItem,
   SelectorWrapper,
@@ -48,6 +50,9 @@ export const Filters = () => {
   const { brand, price, mileageFrom, mileageTo } = useSelector(selectFilters);
   const [brandSelect, setBrandSelect] = useState(brand);
   const [priceSelect, setPriceSelect] = useState(brand);
+  const [mileageFromSelect, setMileageFromSelect] = useState(mileageFrom);
+  const [mileageToSelect, setMileageToSelect] = useState(mileageTo);
+  const [isValid, setIsValid] = useState(true);
 
   const [isBrandDropdownOpen, setIsBrandDropdownOpen] = useState(false);
   const [isPriceDropdownOpen, setIsPriceDropdownOpen] = useState(false);
@@ -63,7 +68,9 @@ export const Filters = () => {
   useEffect(() => {
     setBrandSelect(brand);
     setPriceSelect(price);
-  }, [brand, price]);
+    setMileageFromSelect(mileageFrom);
+    setMileageToSelect(mileageTo);
+  }, [brand, mileageFrom, mileageTo, price]);
 
   useEffect(() => {
     dispatch(
@@ -76,13 +83,25 @@ export const Filters = () => {
     );
   }, [dispatch, searchParams]);
 
+  useEffect(() => {
+    if (
+      mileageFromSelect &&
+      mileageToSelect &&
+      parseInt(mileageFromSelect) > parseInt(mileageToSelect)
+    ) {
+      setIsValid(false);
+    } else {
+      setIsValid(true);
+    }
+  }, [mileageFromSelect, mileageToSelect]);
+
   const handleSubmit = e => {
     e.preventDefault();
 
-    const brand = brandSelect;
-    const price = priceSelect;
-    const mileageFrom = e.target.minMileage.value;
-    const mileageTo = e.target.maxMileage.value;
+    const brand = brandSelect || '';
+    const price = priceSelect || '';
+    const mileageFrom = mileageFromSelect || '';
+    const mileageTo = mileageToSelect || '';
     setSearchParams({ brand, price, mileageFrom, mileageTo });
   };
 
@@ -103,8 +122,7 @@ export const Filters = () => {
         <SelectorWrapper>
           <Selector
             onClick={() => {
-              console.log('open');
-              setIsBrandDropdownOpen(true);
+              setIsBrandDropdownOpen(!isBrandDropdownOpen);
             }}
             width="224px"
           >
@@ -136,8 +154,11 @@ export const Filters = () => {
       <label>
         <Label>Price/ 1 hour</Label>
         <SelectorWrapper>
-          <Selector onClick={() => setIsPriceDropdownOpen(true)} width="125px">
-            {priceSelect || 'To $'}
+          <Selector
+            onClick={() => setIsPriceDropdownOpen(!isPriceDropdownOpen)}
+            width="125px"
+          >
+            {`${priceSelect ? priceSelect : 'To'} $`}
           </Selector>
           <CustomArrow $isOpen={isPriceDropdownOpen} />
           {isPriceDropdownOpen && (
@@ -152,7 +173,7 @@ export const Filters = () => {
                     onClick={handleSelectPrice}
                     value={price}
                     key={price}
-                    $isActive={priceSelect === price}
+                    $isActive={parseInt(priceSelect) === price}
                   >
                     {price}
                   </SelectorItem>
@@ -162,16 +183,16 @@ export const Filters = () => {
           )}
         </SelectorWrapper>
       </label>
-      <label>
+      <MileageContainer>
         <Label>Сar mileage / km</Label>
         <FromToContainer>
           <FormItemWrapper>
             <FromTo>From</FromTo>
             <MilageWrapper
-              type="number"
               name="minMileage"
               id="minMileage"
-              defaultValue={mileageFrom}
+              value={mileageFromSelect || ''}
+              onChange={e => setMileageFromSelect(e.target.value)}
               $side="left"
             />
           </FormItemWrapper>
@@ -181,13 +202,20 @@ export const Filters = () => {
               type="number"
               name="maxMileage"
               id="maxMileage"
-              defaultValue={mileageTo}
+              value={mileageToSelect || ''}
+              onChange={e => setMileageToSelect(e.target.value)}
               $side="right"
             />
           </FormItemWrapper>
         </FromToContainer>
-      </label>
-      <Btn>Search</Btn>
+        {!isValid && (
+          <InvalidErrorMessage>
+            Please enter a valid range: 'To' value should be equal to or greater
+            than 'From'.
+          </InvalidErrorMessage>
+        )}
+      </MileageContainer>
+      <Btn disabled={!isValid}>Search</Btn>
     </Form>
   );
 };

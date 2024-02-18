@@ -92,7 +92,6 @@ export const AdvertModal = ({ data, close }) => {
           </Condition>
         </ConditionList>
         <Btn href="tel:+380730000000">Rental car</Btn>
-        {/* {isModalOpen && <Modal close={closeModal} />} */}
       </Content>
     </Modal>
   );

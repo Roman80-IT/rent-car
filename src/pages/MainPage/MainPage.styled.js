@@ -2,6 +2,7 @@ import { styled } from 'styled-components';
 import bgImgDesktop from '../../images/bg-desktop.jpg';
 import bgImgTablet from '../../images/bg-tablet.png';
 import bgImgMobile from '../../images/bg-mobile.png';
+import { NavLink } from 'react-router-dom';
 
 export const Wrapper = styled.div`
   position: fixed;
@@ -73,7 +74,7 @@ export const Text = styled.p`
   font-size: 24px;
 `;
 
-export const ButtonLink = styled.a`
+export const ButtonLink = styled(NavLink)`
   display: flex;
   width: fit-content;
   padding: 12px 50px;

@@ -27,7 +27,11 @@ const advertsSlice = createSlice({
   },
   extraReducers: builder => {
     builder.addCase(fetchPage.fulfilled, (state, action) => {
-      state.items = [...state.items, ...action.payload];
+      if (action.payload.page === 1) {
+        state.items = action.payload.data;
+      } else {
+        state.items = [...state.items, ...action.payload.data];
+      }
       state.isLoading = false;
       state.error = null;
     });
