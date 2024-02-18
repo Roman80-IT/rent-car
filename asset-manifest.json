@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/rent-car/static/css/main.99fa3f75.css",
-    "main.js": "/rent-car/static/js/main.481cc666.js",
-    "static/media/bg-desktop.jpg": "/rent-car/static/media/bg-desktop.b897812ff8f05eea2187.jpg",
-    "static/media/bg-tablet.png": "/rent-car/static/media/bg-tablet.1ef41ed54e726c21aea1.png",
-    "static/media/bg-mobile.png": "/rent-car/static/media/bg-mobile.e46e4ed440c49389af92.png",
+    "main.js": "/rent-car/static/js/main.33fd9dd7.js",
+    "static/media/bg-desktop.jpg": "/rent-car/static/media/bg-desktop.39fd8bc43d183405dd4e.jpg",
+    "static/media/bg-tablet.jpg": "/rent-car/static/media/bg-tablet.832a838ee5ad63bf7ed0.jpg",
+    "static/media/bg-mobile.jpg": "/rent-car/static/media/bg-mobile.788533f8ece6873699f2.jpg",
     "static/media/Manrope-SemiBold.ttf": "/rent-car/static/media/Manrope-SemiBold.310f108cc524df0e5ffc.ttf",
     "static/media/Manrope-Medium.ttf": "/rent-car/static/media/Manrope-Medium.08894ccb04665d1a9d53.ttf",
     "static/media/Manrope-Regular.ttf": "/rent-car/static/media/Manrope-Regular.a9b9e09fe6b69741f316.ttf",
@@ -15,10 +15,10 @@
     "static/media/x.svg": "/rent-car/static/media/x.f3cbdd58dc25ca7cbb3d242106b56fb9.svg",
     "static/media/arrow.svg": "/rent-car/static/media/arrow.24cd320d509ea2ebbeb4265f8030bafb.svg",
     "main.99fa3f75.css.map": "/rent-car/static/css/main.99fa3f75.css.map",
-    "main.481cc666.js.map": "/rent-car/static/js/main.481cc666.js.map"
+    "main.33fd9dd7.js.map": "/rent-car/static/js/main.33fd9dd7.js.map"
   },
   "entrypoints": [
     "static/css/main.99fa3f75.css",
-    "static/js/main.481cc666.js"
+    "static/js/main.33fd9dd7.js"
   ]
 }
