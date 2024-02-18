@@ -29,36 +29,6 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Wrapper2 = styled.div`
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  // justify-content: space-around;
-  justify-content: end;
-  align-items: center;
-  text-align: center;
-
-  gap: 55vh;
-  left: 0;
-  top: 0;
-  min-width: 100vw;
-  min-height: 100vh;
-  z-index: -1;
-
-  background-image: url(${bgImgMobile});
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  @media screen and (min-width: 768px) {
-    background-image: url(${bgImgTablet});
-  }
-
-  @media screen and (min-width: 1440px) {
-    background-image: url(${bgImgDesktop});
-  }
-`;
-
 export const TextContainer = styled.div`
   width: 100%;
   background-color: rgba(255, 255, 255, 0.5);
