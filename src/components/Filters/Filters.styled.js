@@ -131,6 +131,9 @@ export const SelectorWrapper = styled.div`
 export const SelectorItem = styled.li`
   cursor: pointer;
 
+  color: ${({ $isActive, theme: { colors } }) =>
+    $isActive ? colors.primeryBlack : 'rgba(18, 20, 23, 0.2)'};
+
   &:not(:last-child) {
     margin-bottom: 8px;
   }
