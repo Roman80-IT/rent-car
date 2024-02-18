@@ -1,21 +1,23 @@
 {
   "files": {
-    "main.css": "/rent-car/static/css/main.1fb872a8.css",
-    "main.js": "/rent-car/static/js/main.f7c4510d.js",
-    "static/media/background-car.jpg": "/rent-car/static/media/background-car.b897812ff8f05eea2187.jpg",
+    "main.css": "/rent-car/static/css/main.99fa3f75.css",
+    "main.js": "/rent-car/static/js/main.a8412c62.js",
+    "static/media/bg-desktop.jpg": "/rent-car/static/media/bg-desktop.b897812ff8f05eea2187.jpg",
+    "static/media/bg-tablet.png": "/rent-car/static/media/bg-tablet.1ef41ed54e726c21aea1.png",
+    "static/media/bg-mobile.png": "/rent-car/static/media/bg-mobile.e46e4ed440c49389af92.png",
     "static/media/Manrope-SemiBold.ttf": "/rent-car/static/media/Manrope-SemiBold.310f108cc524df0e5ffc.ttf",
     "static/media/Manrope-Medium.ttf": "/rent-car/static/media/Manrope-Medium.08894ccb04665d1a9d53.ttf",
     "static/media/Manrope-Regular.ttf": "/rent-car/static/media/Manrope-Regular.a9b9e09fe6b69741f316.ttf",
     "static/media/Manrope-Bold.ttf": "/rent-car/static/media/Manrope-Bold.47f6d7143da9d8c0e480.ttf",
-    "static/media/Manrope-Light.ttf": "/rent-car/static/media/Manrope-Light.2bf511c25636c7d7a4ce.ttf",
-    "static/media/Manrope-ExtraLight.ttf": "/rent-car/static/media/Manrope-ExtraLight.d0721272b8d9dd2d2d0f.ttf",
     "index.html": "/rent-car/index.html",
-    "static/media/close-icon.svg": "/rent-car/static/media/close-icon.b06b2fd3c8d21b62c8fa146355af2ae1.svg",
-    "main.1fb872a8.css.map": "/rent-car/static/css/main.1fb872a8.css.map",
-    "main.f7c4510d.js.map": "/rent-car/static/js/main.f7c4510d.js.map"
+    "static/media/normal.svg": "/rent-car/static/media/normal.282d936f414f4c6884ab9306a91dad67.svg",
+    "static/media/active.svg": "/rent-car/static/media/active.97847e9195943f61800c97807e735d4f.svg",
+    "static/media/x.svg": "/rent-car/static/media/x.f3cbdd58dc25ca7cbb3d242106b56fb9.svg",
+    "main.99fa3f75.css.map": "/rent-car/static/css/main.99fa3f75.css.map",
+    "main.a8412c62.js.map": "/rent-car/static/js/main.a8412c62.js.map"
   },
   "entrypoints": [
-    "static/css/main.1fb872a8.css",
-    "static/js/main.f7c4510d.js"
+    "static/css/main.99fa3f75.css",
+    "static/js/main.a8412c62.js"
   ]
 }
