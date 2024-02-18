@@ -17,10 +17,17 @@ const advertsSlice = createSlice({
         state.favorites.push(action.payload);
       },
     },
+    removeFavorites: {
+      reducer(state, action) {
+        state.favorites = [
+          ...state.favorites.filter(item => item.id !== action.payload),
+        ];
+      },
+    },
   },
   extraReducers: builder => {
     builder.addCase(fetchAll.fulfilled, (state, action) => {
-      state.items = action.payload;
+      state.items = [...state.items, ...action.payload];
       state.isLoading = false;
       state.error = null;
     });
@@ -35,5 +42,5 @@ const advertsSlice = createSlice({
   },
 });
 
-export const { addFavorites } = advertsSlice.actions;
+export const { addFavorites, removeFavorites } = advertsSlice.actions;
 export const advertsReducer = advertsSlice.reducer;
