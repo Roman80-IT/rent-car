@@ -1,4 +1,4 @@
-import { fetchAll } from './operations';
+import { fetchPage, getByMake } from './operations';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -26,16 +26,29 @@ const advertsSlice = createSlice({
     },
   },
   extraReducers: builder => {
-    builder.addCase(fetchAll.fulfilled, (state, action) => {
+    builder.addCase(fetchPage.fulfilled, (state, action) => {
       state.items = [...state.items, ...action.payload];
       state.isLoading = false;
       state.error = null;
     });
-    builder.addCase(fetchAll.pending, state => {
+    builder.addCase(getByMake.fulfilled, (state, action) => {
+      state.items = action.payload;
+      state.isLoading = false;
+      state.error = null;
+    });
+    builder.addCase(fetchPage.pending, state => {
       state.isLoading = true;
       state.error = null;
     });
-    builder.addCase(fetchAll.rejected, (state, action) => {
+    builder.addCase(getByMake.pending, state => {
+      state.isLoading = true;
+      state.error = null;
+    });
+    builder.addCase(fetchPage.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    });
+    builder.addCase(getByMake.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     });

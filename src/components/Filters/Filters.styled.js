@@ -39,14 +39,14 @@ export const MilageWrapper = styled.input`
   width: 160px;
   height: 48px;
   border: none;
-  border-radius: ${({ side }) => {
-    if (side === 'left') {
+  border-radius: ${({ $side }) => {
+    if ($side === 'left') {
       return '14px 0 0 14px';
     }
     return '0 14px 14px 0';
   }};
-  border-right: ${({ side }) => {
-    if (side === 'left') {
+  border-right: ${({ $side }) => {
+    if ($side === 'left') {
       return '1px solid rgba(138, 138, 137, 0.20)';
     }
   }};

@@ -11,6 +11,7 @@ import {
   Select,
 } from './Filters.styled';
 import { selectMaxPrice, selectMinPrice } from '../../redux/selectors';
+import { useSearchParams } from 'react-router-dom';
 
 const makes = [
   'Buick',
@@ -24,7 +25,6 @@ const makes = [
   'Hyundai',
   'MINI',
   'Bentley',
-  'Mercedes-Benz',
   'Aston Martin',
   'Pontiac',
   'Lamborghini',
@@ -38,6 +38,7 @@ const makes = [
 ];
 
 export const Filters = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const maxPrice = useSelector(selectMaxPrice);
   const minPrice = useSelector(selectMinPrice);
 
@@ -49,8 +50,24 @@ export const Filters = () => {
     return result;
   };
 
+  // useEffect(() => {
+  //   if (searchParams.has('brand')) {
+  //     setBrand(searchParams.get('brand'));
+  //   } else {
+  //     setBrand('');
+  //   }
+  // }, [searchParams]);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    const brand = e.target.brand.value;
+    console.log(searchParams);
+    setSearchParams({ brand });
+  };
+
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <label>
         <Label>Car brand</Label>
         <FormItemWrapper>
@@ -59,7 +76,9 @@ export const Filters = () => {
               Enter the text
             </option>
             {makes.map(item => (
-              <option value={item}>{item}</option>
+              <option value={item} key={item}>
+                {item}
+              </option>
             ))}
           </Select>
           <CustomArrow />
@@ -73,7 +92,9 @@ export const Filters = () => {
               To $
             </option>
             {createRange(minPrice, maxPrice, 10).map(price => (
-              <option value={price}>{price}</option>
+              <option value={price} key={price}>
+                {price}
+              </option>
             ))}
           </Select>
           <CustomArrow />
@@ -88,7 +109,7 @@ export const Filters = () => {
               type="number"
               name="min-milege"
               id="min-milege"
-              side="left"
+              $side="left"
             />
           </FormItemWrapper>
           <FormItemWrapper>
@@ -97,7 +118,7 @@ export const Filters = () => {
               type="number"
               name="max-milege"
               id="max-milege"
-              side="right"
+              $side="right"
             />
           </FormItemWrapper>
         </FromToContainer>
