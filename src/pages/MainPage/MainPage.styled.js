@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 import bgImgDesktop from '../../images/bg-desktop.jpg';
-import bgImgTablet from '../../images/bg-tablet.png';
-import bgImgMobile from '../../images/bg-mobile.png';
+import bgImgTablet from '../../images/bg-tablet.jpg';
+import bgImgMobile from '../../images/bg-mobile.jpg';
 import { NavLink } from 'react-router-dom';
 
 export const Wrapper = styled.div`
